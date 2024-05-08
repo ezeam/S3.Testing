@@ -1,18 +1,32 @@
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(array) {
-  let result =  ???;
+//console.table(movies);
+
+function getAllDirectors(array) { 
+  let result =  array.map (function (film) {
+    return film.director;
+  })  
   console.log("EXERCICE 1 ->", result);
-  return result;
+  return result; 
 }
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
- 
+  const result = array.filter((film) => film.director === director);
+  console.log("EXERCICE 2 ->", result);
+  return result;
 }
+ 
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-  
+  let filmsFromDirector = getMoviesFromDirector(array, director);  
+  const addition =  filmsFromDirector.reduce((accumulator, currentValue) => {
+    accumulator += currentValue.score;  
+    return accumulator;  
+  }, 0);
+  let average = +(addition / filmsFromDirector.length).toFixed(2);
+  console.log("EXERCICE 3 ->", average);
+  return average;
 }
 
 // Exercise 4:  Alphabetic order by title 

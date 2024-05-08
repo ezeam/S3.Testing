@@ -1,3 +1,4 @@
+const director = "Francis Ford Coppola";
 const movies = [
   {
     title: 'The Shawshank Redemption',
@@ -2001,6 +2002,7 @@ const movies = [
     score: 8
   }
 ];
+
 
 /* export default films; */
 if (typeof module !== 'undefined') {
