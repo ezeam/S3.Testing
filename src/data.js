@@ -1,6 +1,7 @@
 const director = "Francis Ford Coppola";
+const genre = "Crime";
 const movies = [
-  {
+ /* {
     title: 'The Shawshank Redemption',
     year: 1994,
     director: 'Frank Darabont',
@@ -600,7 +601,7 @@ const movies = [
     duration: '2h 11min',
     genre: ['Action', 'Adventure', 'Fantasy', 'Sci-Fi'],
     score: 8.4
-  },
+  }, 
   {
     title: 'Braveheart',
     year: 1995,
@@ -1936,7 +1937,7 @@ const movies = [
     duration: '1h 38min',
     genre: ['Drama', 'Romance'],
     score: 8.1
-  },
+  },*/
   {
     title: 'Sholay',
     year: 1975,
