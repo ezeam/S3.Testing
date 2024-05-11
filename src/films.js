@@ -82,7 +82,7 @@ function hoursToMinutes(array) {
   let min4 = 0;
   let totalHours = 0;
   let totalMinuts = 0;
-  const originalArrayNewDuration = array;
+  const originalArrayNewDuration = array.map(film => ({ ...film }));
   console.table("Array original antes de hacer nada", array);
 
   durationsFilms = originalArrayNewDuration.forEach(film => {
@@ -118,31 +118,11 @@ function hoursToMinutes(array) {
     //console.log("Total horas en minutos", totalHours);
     totalMinuts = +(minuts) + +(totalHours);
     //console.log("Total minutos: ", totalMinuts);
-    console.log("--------------------------");
-    durationsFilms.push(totalMinuts);
-    //console.table("Array de duraciones de película", durationsFilms);
-
-    durationsFilms.forEach((valor, indice) => {
-    originalArrayNewDuration[indice].duration = valor;
-    
-    });
-   } );
-   //Tengo que meter la array durationsFilms en los huecos de duration del array original
-   //console.table("Array modificada", originalArrayNewDuration);
-
-   if(array === originalArrayNewDuration){
-    console.log("Son iguales!");
-    console.table("Array modificada", originalArrayNewDuration);
-    console.table("Array original", array);
-   }
-   else {
-    console.log("No son iguales");
-    console.table("Array modificada", originalArrayNewDuration);
-    console.table("Array original", array);
-   }
-  
+    film.duration = totalMinuts;
+   });  
   return originalArrayNewDuration;
-}
+};
+
 
 /*function sonNumeros(cadena) {
   return /^\d+$/.test(cadena);
