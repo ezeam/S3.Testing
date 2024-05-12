@@ -1,5 +1,3 @@
-const director = "Francis Ford Coppola";
-const genre = "Crime";
 const movies = [
   {
     title: 'The Shawshank Redemption',

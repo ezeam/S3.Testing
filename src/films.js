@@ -31,19 +31,17 @@ function moviesAverageOfDirector(array, director) {
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  const arrayTitulos = array.map(film => film.title);
-  console.log(arrayTitulos);
-  const arrayOrdenada = arrayTitulos.sort();
-  console.log(arrayOrdenada); 
-  const array20TitulosOrdenados = arrayOrdenada.slice(0, 20);
-  console.log("EXERCICE 4 ->", array20TitulosOrdenados);
-  return array20TitulosOrdenados;
+  const titles = array.map(film => film.title);
+  const ordererTitles = titles.sort(); 
+  const ordererTitles20 = ordererTitles.slice(0, 20);
+  console.log("EXERCICE 4 ->", ordererTitles20);
+  return ordererTitles20;
 }
 
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
-  let peliculas = [...array];
-  peliculas.sort((a,b) =>{
+  let films = [...array];
+  films.sort((a,b) =>{
     if(a.year > b.year){
       return 1;
     }
@@ -52,12 +50,12 @@ function orderByYear(array) {
     }
     return a.title.localeCompare(b.title);
   });
-  return peliculas;
+  console.log("EXERCICE 5 ->", films);
+  return films;
 }
 
-// Exercise 6: Calculate the average of the movies in a category REVISAR!! NO FUNCIONA!
+// Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, category) {
-  //Necesito calcular la media de las peliculas de un género determinado.
   let accumulator = 0;
   let counter = 0;
   array.forEach(film => {
@@ -73,9 +71,7 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes(array) {
-  console.table("Array original nada más", array);
-  let durationsFilms = new Array ();
+function hoursToMinutes(array) {  
   let hour = 0;
   let minuts = 0;
   let min3 = 0;
@@ -83,57 +79,44 @@ function hoursToMinutes(array) {
   let totalHours = 0;
   let totalMinuts = 0;
   const originalArrayNewDuration = array.map(film => ({ ...film }));
-  console.table("Array original antes de hacer nada", array);
-
-  durationsFilms = originalArrayNewDuration.forEach(film => {
-    console.log("Duración de la película:", film.duration);
+  const durationsFilms = originalArrayNewDuration.forEach(film => {
     console.table("Array original dentro del primer forEach", array);
     hour = +(film.duration[0]);
-    console.log("Horas", hour);
-    //console.log(typeof(hour));
     min3 = +(film.duration[3]);
-    //console.log(typeof(minutos1));
     min4 = +(film.duration[4]);
-    //console.log(typeof(minutos2));
     if(!isNaN(parseInt(min3)) && !isNaN(parseInt(min4))){
-      //console.log("La posición 3 es un número?: ", typeof(min3))
-      //console.log("La posición 4 es un número?: ", typeof(min4))
       minuts = min3.toString() + min4.toString(); 
-      minuts = +(minuts);
-      //console.log("Minutos sumando posiciones 3 y 4: ", minuts);
-      //console.log("Los minutos totales son un número?: ", typeof(minuts))     
+      minuts = +(minuts);     
     }
     else if (!isNaN(parseInt(min3))) {
       minuts = min3;
-      //console.log("Minutos si sólo hay número en la posición 3: ", minuts);
-      //console.log("Los minutos totales son un número?: ", typeof(minuts))
     }  
     else {
       minuts = 0;
-      //console.log("Minutos si están los dos vacíos: ", minuts);
-      //console.log("Los minutostotales son un número?: ", typeof(minuts))
-    }    
-    //console.log("Minutos", minuts);  
+    }
     totalHours = +(hour * 60);
-    //console.log("Total horas en minutos", totalHours);
     totalMinuts = +(minuts) + +(totalHours);
-    //console.log("Total minutos: ", totalMinuts);
     film.duration = totalMinuts;
    });  
+  console.log("EXERCICE 7 ->", originalArrayNewDuration);
   return originalArrayNewDuration;
 };
 
-
-/*function sonNumeros(cadena) {
-  return /^\d+$/.test(cadena);
-}*/
-
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array, usuariYear) {
+  const bestFilmOfYear = array.map(film => ({ ...film}));
+  const filmsFromYear = bestFilmOfYear.filter((film) => film.year === usuariYear);
+  const bestScoreYear = filmsFromYear.reduce(function (bestScoreFilms, currentFilmScore) {
+    if (!bestScoreFilms.length || currentFilmScore.score > bestScoreFilms[0].score) {
+        return [currentFilmScore];
+    } else if (currentFilmScore.score === bestScoreFilms[0].score) {
+        bestScoreFilms.push(currentFilmScore);
+    }
+    return bestScoreFilms;
+}, []);
+  console.log("EXERCICE 8 ->", bestScoreYear);
+  return bestScoreYear;
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
